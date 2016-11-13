@@ -29,9 +29,9 @@ class Request
 
 	public function __construct() 
 	{
-		echo 'coucou';
+		
 		$this->verb = $_SERVER['REQUEST_METHOD'];
-		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
+		$this->url_elements = explode('/', $_SERVER['REQUEST_URI']);
 		$this->parseIncomingParams();
 		// initialise json as default format
 		$this->format = 'json';
@@ -53,7 +53,7 @@ class Request
 		        $view->render($result);
 	    	}
 		}
-		return true;
+		//return 'ok';//true;
 	}
 		
 	public function parseIncomingParams() 
