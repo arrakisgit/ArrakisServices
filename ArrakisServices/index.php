@@ -20,6 +20,7 @@ function apiAutoload($classname)
 	}
 }
 $request = new Request();
+echo $request->format;
 class Request 
 {
 	public $url_elements;
