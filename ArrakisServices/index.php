@@ -19,7 +19,7 @@ function apiAutoload($classname)
 		return true;
 	}
 }
-
+$request = new Request();
 class Request 
 {
 	public $url_elements;
