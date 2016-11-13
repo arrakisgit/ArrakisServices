@@ -29,6 +29,7 @@ class Request
 
 	public function __construct() 
 	{
+		echo 'coucou';
 		$this->verb = $_SERVER['REQUEST_METHOD'];
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		$this->parseIncomingParams();
