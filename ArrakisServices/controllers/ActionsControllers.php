@@ -5,7 +5,7 @@ class ActionsControllers //extends MyController
 	
 	public function __construct()
 	{
-		$this->ServerPath="http://127.0.0.1";
+		$this->ServerPath="http://127.0.0.1/ArrakisServices/ArrakisServices/";
 	}
 	public function getAction($request) 
 	{
