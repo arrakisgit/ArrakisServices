@@ -1,6 +1,12 @@
 <?php
 class ActionsControllers //extends MyController
 {
+	private $ServerPath;
+	
+	public function __construct()
+	{
+		$this->ServerPath="http://127.0.0.1";
+	}
 	public function getAction($request) 
 	{
 		
@@ -8,9 +14,10 @@ class ActionsControllers //extends MyController
 
 	public function postAction($request)
 	{
-			$data = $request->parameters;
-			$data['message'] = "This data was submitted";
-			return $data;
+		$urlPath=$request->parameters['urlPath'];
+		$pConverted=new Convertor($urlPath, $this->ServerPath);
+		$data=$pConverted->processConverting();
+		return array('UrlConverted'=>$data);
 	}
 }
 ?>

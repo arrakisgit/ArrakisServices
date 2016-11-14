@@ -8,7 +8,7 @@ function apiAutoload($classname)
 		include __DIR__ . '/controllers/' . $classname . '.php';
 		return true;
 	} 
-	elseif (preg_match('/[a-zA-Z]+Model$/', $classname)) 
+	elseif (preg_match('/[a-zA-Z]+Models$/', $classname)) 
 	{
 		include __DIR__ . '/models/' . $classname . '.php';
 		return true;
@@ -19,8 +19,10 @@ function apiAutoload($classname)
 		return true;
 	}
 }
+
 $request = new Request();
-echo $request->format;
+
+//echo $request->format;
 class Request 
 {
 	public $url_elements;
@@ -41,20 +43,20 @@ class Request
 			$this->format = $this->parameters['format'];
 		}
 		// route the request to the right place
-		$controller_name = ucfirst($url_elements[1]) . 'Controller';
+		$controller_name = ucfirst($url_elements[1]) . 'Controllers';
 		if (class_exists($controller_name)) 
 		{
 			$controller = new $controller_name();
 			$action_name = strtolower($verb) . 'Action';
 			$result = $controller->$action_name();
-			$view_name = ucfirst($request->format) . 'View';
+			$view_name = ucfirst($request->format) . 'Views';
 	    	if(class_exists($view_name))
 	    	{
 		        $view = new $view_name();
-		        $view->render($result);
+		        $results=$view->render($result);
 	    	}
 		}
-		//return 'ok';//true;
+		return $results;//true;
 	}
 		
 	public function parseIncomingParams() 
