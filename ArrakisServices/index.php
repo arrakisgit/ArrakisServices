@@ -44,7 +44,7 @@ class Request
 			$this->format = $this->parameters['format'];
 		}
 		// route the request to the right place
-		$controller_name = ucfirst($url_elements[1]) . 'Controllers';
+		$controller_name = ucfirst($this->url_elements[1]) . 'Controllers';
 		if (class_exists($controller_name)) 
 		{
 			$controller = new $controller_name();
@@ -59,7 +59,7 @@ class Request
 		}
 		else 
 		{
-			$this->result =$this->url_elements[1];//$_SERVER['PATH_INFO'];
+			$this->result =$controller_name;//$_SERVER['PATH_INFO'];
 		}
 		return 'coucou';//$results;//true;
 	}
