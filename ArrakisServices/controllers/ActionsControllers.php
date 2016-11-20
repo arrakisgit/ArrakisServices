@@ -7,9 +7,9 @@ class ActionsControllers //extends MyController
 	{
 		$this->ServerPath="http://192.168.0.44/ArrakisServices/ArrakisServices/";
 	}
-	public function getAction($request) 
+	public function getAction() 
 	{
-		
+		return 'getAction';
 	}
 
 	public function postAction($request)
