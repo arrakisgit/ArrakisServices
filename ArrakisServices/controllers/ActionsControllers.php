@@ -14,10 +14,11 @@ class ActionsControllers //extends MyController
 
 	public function postAction($param)
 	{
-		$urlPath=$param->param['urlPath'];
+		return $param;
+		/*$urlPath=$param->param['urlPath'];
 		$pConverted=new Convertor($urlPath, $this->ServerPath);
 		$data=$pConverted->processConverting();
-		return array('UrlConverted'=>$data);
+		return array('UrlConverted'=>$data);*/
 	}
 }
 ?>
