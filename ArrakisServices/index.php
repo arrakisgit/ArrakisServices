@@ -59,7 +59,7 @@ class Request
 		}
 		else 
 		{
-			$this->result ='rien';
+			$this->result =$url_elements[1];
 		}
 		return 'coucou';//$results;//true;
 	}
