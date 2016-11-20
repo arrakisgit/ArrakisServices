@@ -62,7 +62,7 @@ class Request
 		{
 			$this->result ='rien';//$controller_name;//$_SERVER['PATH_INFO'];
 		}
-		return $this->format;//$this->result;//$results;//true;
+		return 'coucou';//$this->format;//$this->result;//$results;//true;
 	}
 		
 	public function parseIncomingParams() 
