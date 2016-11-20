@@ -56,7 +56,7 @@ class Request
 		    //    $view = new $view_name();
 		    //    $this->result=$view->render($this->result);
 	    	//}
-			$this->result=$action_name;
+			$this->result=$this->format;
 		}
 		else 
 		{
