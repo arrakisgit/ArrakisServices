@@ -59,7 +59,7 @@ class Request
 		}
 		else 
 		{
-			$this->result =var_dump($url_elements);
+			$this->result =$_SERVER['PATH_INFO'];
 		}
 		return 'coucou';//$results;//true;
 	}
