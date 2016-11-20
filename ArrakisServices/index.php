@@ -56,7 +56,7 @@ class Request
 		        $view = new $view_name();
 		        $results=$view->render($result);
 	    	}*/
-			$this->result='ok';
+			$this->result=$controller_name;
 		}
 		else 
 		{
