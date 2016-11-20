@@ -57,6 +57,10 @@ class Request
 		        $results=$view->render($result);
 	    	}
 		}
+		else 
+		{
+			$this->result ='rien';
+		}
 		return 'coucou';//$results;//true;
 	}
 		
