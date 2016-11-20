@@ -56,7 +56,7 @@ class Request
 		    //    $view = new $view_name();
 		    //    $this->result=$view->render($this->result);
 	    	//}
-			$this->result=$this->format;
+			$this->result=$_SERVER['QUERY_STRING'];
 		}
 		else 
 		{
