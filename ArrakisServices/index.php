@@ -59,7 +59,7 @@ class Request
 		}
 		else 
 		{
-			$this->result =$url_elements[1];
+			$this->result =var_dump($url_elements);
 		}
 		return 'coucou';//$results;//true;
 	}
