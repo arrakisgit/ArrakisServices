@@ -22,13 +22,14 @@ function apiAutoload($classname)
 
 $request = new Request();
 
-echo $request->verb;
+echo $request->result;
 class Request 
 {
 	public $url_elements;
 	public $verb;
 	public $parameters;
 	public $format;
+	public $result;
 
 	public function __construct() 
 	{
@@ -48,7 +49,7 @@ class Request
 		{
 			$controller = new $controller_name();
 			$action_name = strtolower($verb) . 'Action';
-			$result = $controller->$action_name();
+			$this->result = $controller->$action_name();
 			$view_name = ucfirst($request->format) . 'Views';
 	    	if(class_exists($view_name))
 	    	{
