@@ -49,14 +49,14 @@ class Request
 		{
 			$controller = new $controller_name();
 			$action_name = strtolower($this->verb) . 'Action';
-			//$this->result = $controller->$action_name($this->parameters);
+			$this->result = $controller->$action_name($this->parameters);
 			//$view_name = ucfirst($this->format) . 'Views';
 	    	//if(class_exists($view_name))
 	    	//{
 		    //    $view = new $view_name();
 		    //    $this->result=$view->render($this->result);
 	    	//}
-			$this->result=$action_name;
+			//$this->result=$action_name;
 		}
 		else 
 		{
