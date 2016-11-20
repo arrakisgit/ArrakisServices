@@ -38,7 +38,7 @@ class Request
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		$this->parseIncomingParams();
 		// initialise json as default format
-		$this->format = 'json';
+		$this->format = 'jsonX';
 		if(isset($this->parameters['format'])) 
 		{
 			$this->format = $this->parameters['format'];
@@ -62,7 +62,7 @@ class Request
 		{
 			$this->result ='rien';//$controller_name;//$_SERVER['PATH_INFO'];
 		}
-		return $this->result;//$results;//true;
+		return $this->format;//$this->result;//$results;//true;
 	}
 		
 	public function parseIncomingParams() 
