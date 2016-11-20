@@ -49,8 +49,8 @@ class Request
 		{
 			$controller = new $controller_name();
 			$action_name = strtolower($verb) . 'Action';
-			/*$this->result = $controller->$action_name();
-			$view_name = ucfirst($request->format) . 'Views';
+			$this->result = $controller->$action_name();
+			/*$view_name = ucfirst($request->format) . 'Views';
 	    	if(class_exists($view_name))
 	    	{
 		        $view = new $view_name();
