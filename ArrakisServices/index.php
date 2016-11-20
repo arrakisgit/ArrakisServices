@@ -49,20 +49,20 @@ class Request
 		{
 			$controller = new $controller_name();
 			$action_name = strtolower($this->verb) . 'Action';
-			$this->result = $controller->$action_name();
-			/*$view_name = ucfirst($request->format) . 'Views';
+			$this->result = $controller->$action_name($this->parameters);
+			$view_name = ucfirst($this->format) . 'Views';
 	    	if(class_exists($view_name))
 	    	{
 		        $view = new $view_name();
-		        $results=$view->render($result);
-	    	}*/
+		        $this->result=$view->render($this->result);
+	    	}
 			//$this->result=$controller_name;
 		}
 		else 
 		{
-			$this->result =$controller_name;//$_SERVER['PATH_INFO'];
+			$this->result ='rien';//$controller_name;//$_SERVER['PATH_INFO'];
 		}
-		return 'coucou';//$results;//true;
+		return $this->result;//$results;//true;
 	}
 		
 	public function parseIncomingParams() 
