@@ -56,7 +56,7 @@ class Request
 		        $results=$view->render($result);
 	    	}
 		}
-		return $results;//true;
+		return 'coucou';//$results;//true;
 	}
 		
 	public function parseIncomingParams() 
