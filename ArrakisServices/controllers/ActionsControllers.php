@@ -15,7 +15,7 @@ class ActionsControllers //extends MyController
 	public function postAction($param)
 	{
 		//return $param;
-		$urlPath=$param->param['urlPath'];
+		$urlPath=$param['urlPath'];
 		return $urlPath;
 		/*$pConverted=new Convertor($urlPath, $this->ServerPath);
 		$data=$pConverted->processConverting();
