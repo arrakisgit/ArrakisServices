@@ -84,7 +84,7 @@ class Request
 					$body_params = json_decode(stripslashes(str_replace("\xEF\xBB\xBF",'',$body)));
 					//$error = json_last_error();
 					
-					$this->parameters =$body_params;//['.stripslashes($body).']';//$body_params;
+					$this->parameters ='['.stripslashes($body).']';//$body_params;
 					if($body_params)
 					{
 						foreach($body_params as $param_name => $param_value)
