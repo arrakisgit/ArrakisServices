@@ -80,11 +80,11 @@ class Request
 			switch($content_type)
 			{
 				case "application/json":
-					$this->parameters =$body;
-					$body_params = json_decode(stripslashes($body));
-					$error = json_last_error();
+					//$this->parameters =$body;
+					$body_params = json_decode(stripslashes(str_replace("\xEF\xBB\xBF",'',$body)));
+					//$error = json_last_error();
 					
-					$this->parameters =decodeJsonError($error);//$body_params;//['.stripslashes($body).']';//$body_params;
+					$this->parameters =$body_params;//['.stripslashes($body).']';//$body_params;
 					if($body_params)
 					{
 						foreach($body_params as $param_name => $param_value)
