@@ -81,8 +81,10 @@ class Request
 			{
 				case "application/json":
 					$this->parameters =$body;
-					$body_params = json_decode('['.stripslashes($body).']');
-					$this->parameters =$body_params;//['.stripslashes($body).']';//$body_params;
+					$body_params = json_decode(stripslashes($body));
+					$error = json_last_error();
+					
+					$this->parameters =decodeJsonError($error);//$body_params;//['.stripslashes($body).']';//$body_params;
 					if($body_params)
 					{
 						foreach($body_params as $param_name => $param_value)
@@ -106,6 +108,28 @@ class Request
 					break;
 			}
 			//$this->parameters = $body;//$parameters;
+		}
+		
+		private function decodeJsonError($errorCode)
+		{
+			$errors = array(
+					JSON_ERROR_NONE => 'No error has occurred',
+					JSON_ERROR_DEPTH => 'The maximum stack depth has been exceeded',
+					JSON_ERROR_STATE_MISMATCH => 'Invalid or malformed JSON',
+					JSON_ERROR_CTRL_CHAR => 'Control character error, possibly incorrectly encoded',
+					JSON_ERROR_SYNTAX => 'Syntax error',
+					JSON_ERROR_UTF8 => 'Malformed UTF-8 characters, possibly incorrectly encoded',
+					JSON_ERROR_RECURSION => 'One or more recursive references in the value to be encoded',
+					JSON_ERROR_INF_OR_NAN => 'One or more NAN or INF values in the value to be encoded',
+					JSON_ERROR_UNSUPPORTED_TYPE => 'A value of a type that cannot be encoded was given'
+			);
+		
+			if (isset($errors[$errorCode]))
+			{
+				return $errors[$errorCode];
+			}
+		
+			return 'Unknown error';
 		}
 }
 ?>
