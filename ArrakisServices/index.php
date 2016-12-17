@@ -103,7 +103,7 @@ class Request
 					// we could parse other supported formats here
 					break;
 			}
-			$this->parameters = $parameters;
+			$this->parameters = $body;//$parameters;
 		}
 }
 ?>
