@@ -16,10 +16,10 @@ class ActionsControllers //extends MyController
 	{
 		//return $param;
 		$urlPath=$param['urlPath'];
-		return $urlPath;
-		/*$pConverted=new Convertor($urlPath, $this->ServerPath);
+		//return $urlPath;
+		$pConverted=new Convertor($urlPath, $this->ServerPath);
 		$data=$pConverted->processConverting();
-		return array('UrlConverted'=>$data);*/
+		return array('UrlConverted'=>$data);
 	}
 }
 ?>
