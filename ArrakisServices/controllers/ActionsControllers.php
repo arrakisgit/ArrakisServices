@@ -33,21 +33,21 @@ class ActionsControllers //extends MyController
 		 if ($extension=='AVI')
 		 {
 		 $commandeShell='sudo avconv -i '.$PathOrigin.' -c:v libx264 -c:a copy '.str_replace('http://192.168.0.44','/var/www/html',$URL_COVERT_VIDEOS);
-		 $result=$this->ExcuteShell($commandeShell);
+		 $result=ExcuteShell($commandeShell);
 		
 		 }
 		 elseif ($extension=="MKV")
 		 {
 		 $commandeShell='sudo ffmpeg -i '.$urlPath.' -vcodec copy -acodec copy '.$URL_COVERT_VIDEOS;
-		 $result=$this->ExcuteShell($commandeShell);
+		 $result=ExcuteShell($commandeShell);
 		
 		 }
 		 else
 		 {
 		 	
 		 }
-		 $PathConvertedFile=$URL_COVERT_VIDEOS;
-		return $PathConvertedFile;
+		 //$PathConvertedFile=$URL_COVERT_VIDEOS;
+		return $URL_COVERT_VIDEOS;
 	}
 	
 	public function ExcuteShell($cmd)
