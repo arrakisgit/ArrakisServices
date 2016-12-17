@@ -18,11 +18,11 @@ class ActionsControllers //extends MyController
 		$urlPath=$param['urlPath'];
 		//return $urlPath;
 		//$pConverted=new Convertor($urlPath, $this->ServerPath);
-		$data=Convector($urlPath);
-		return array('UrlConverted'=>$data);
+		$data=Convectors($urlPath);
+		return $data;
 	}
 	
-	public function Convector($PathOrigine)
+	public function Convectors($PathOrigine)
 	{
 		$vide='';
 		$SRV_CONVERT='http://192.168.0.44/ArrakisWeb/ArrakisVideos/';
