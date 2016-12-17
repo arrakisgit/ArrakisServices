@@ -22,7 +22,7 @@ function apiAutoload($classname)
 
 $request = new Request();
 
-echo $request->format;
+echo $request->verb;
 class Request 
 {
 	public $url_elements;
