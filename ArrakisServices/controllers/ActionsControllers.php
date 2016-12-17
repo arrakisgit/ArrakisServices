@@ -30,7 +30,7 @@ class ActionsControllers //extends MyController
 		 $NameVideos=str_replace('.'.strtolower($extension),$vide,strrev(explode('/',strrev($PathOrigin))[0]));
 		 $URL_COVERT_VIDEOS=$SRV_CONVERT.$NameVideos.'.mp4';
 		
-		 if ($extension=='AVI')
+		 /*if ($extension=='AVI')
 		 {
 		 $commandeShell='sudo avconv -i '.$PathOrigin.' -c:v libx264 -c:a copy '.str_replace('http://192.168.0.44','/var/www/html',$URL_COVERT_VIDEOS);
 		 $result=ExcuteShell($commandeShell);
@@ -45,7 +45,7 @@ class ActionsControllers //extends MyController
 		 else
 		 {
 		 	
-		 }
+		 }*/
 		 //$PathConvertedFile=$URL_COVERT_VIDEOS;
 		return $URL_COVERT_VIDEOS;
 	}
