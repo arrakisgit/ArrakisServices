@@ -80,7 +80,7 @@ class Request
 			switch($content_type)
 			{
 				case "application/json":
-					$this->parameters ='avant';
+					$this->parameters =$body;
 					$body_params = json_decode($body);
 					//$this->parameters =$body_params;
 					if($body_params)
