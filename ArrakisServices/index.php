@@ -81,6 +81,7 @@ class Request
 			{
 				case "application/json":
 					$body_params = json_decode($body);
+					$this->parameters =$body_params;
 					if($body_params)
 					{
 						foreach($body_params as $param_name => $param_value)
@@ -103,7 +104,7 @@ class Request
 					// we could parse other supported formats here
 					break;
 			}
-			$this->parameters = $body;//$parameters;
+			//$this->parameters = $body;//$parameters;
 		}
 }
 ?>
