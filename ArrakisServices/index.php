@@ -84,14 +84,14 @@ class Request
 					$body_params = json_decode(stripslashes(html_entity_decode($body)));
 					//$error = json_last_error();
 					
-					$this->parameters ='['.stripslashes($body).']';//$body_params;
-					if($body_params)
+					$this->parameters =$body_params;
+					/*if($body_params)
 					{
 						foreach($body_params as $param_name => $param_value)
 						{
 							$parameters[$param_name] = $param_value;
 						}
-					}
+					}*/
 					$this->format = "json";
 					break;
 				case "application/x-www-form-urlencoded":
