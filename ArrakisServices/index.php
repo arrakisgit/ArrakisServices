@@ -82,7 +82,7 @@ class Request
 				case "application/json":
 					$this->parameters =$body;
 					$body_params = json_decode(stripslashes($body),true);
-					$this->parameters =$body_params;
+					$this->parameters =stripslashes($body);//$body_params;
 					if($body_params)
 					{
 						foreach($body_params as $param_name => $param_value)
