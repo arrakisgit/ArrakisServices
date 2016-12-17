@@ -49,7 +49,7 @@ class Request
 		{
 			$controller = new $controller_name();
 			$action_name = strtolower($this->verb) . 'Action';
-			$this->result=$controller.$action_name($this->parameters);
+			$this->result=$controller->$action_name($this->parameters);
 		}
 		else 
 		{
