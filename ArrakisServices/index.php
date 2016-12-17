@@ -22,7 +22,7 @@ function apiAutoload($classname)
 
 $request = new Request();
 
-echo $request->url_elements[1];
+echo $request->format;
 class Request 
 {
 	public $url_elements;
@@ -38,7 +38,7 @@ class Request
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		$this->parseIncomingParams();
 		// initialise json as default format
-		$this->format = 'jsonX';
+		//$this->format = 'jsonX';
 		if(isset($this->parameters['format'])) 
 		{
 			$this->format = $this->parameters['format'];
