@@ -110,7 +110,7 @@ class Request
 			//$this->parameters = $body;//$parameters;
 		}
 		
-		private function decodeJsonError($errorCode)
+		public function decodeJsonError($errorCode)
 		{
 			$errors = array(
 					JSON_ERROR_NONE => 'No error has occurred',
