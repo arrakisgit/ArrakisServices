@@ -22,7 +22,7 @@ function apiAutoload($classname)
 
 $request = new Request();
 
-echo $request->verb;
+echo $request->result;
 class Request 
 {
 	public $url_elements;
@@ -49,7 +49,7 @@ class Request
 		{
 			$controller = new $controller_name();
 			$action_name = strtolower($this->verb) . 'Action';
-			$this->result=$_SERVER['QUERY_STRING'];
+			$this->result=$controller.$action_name();
 		}
 		else 
 		{
