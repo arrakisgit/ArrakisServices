@@ -81,7 +81,7 @@ class Request
 			{
 				case "application/json":
 					//$this->parameters =$body;
-					$body_params = json_decode(stripslashes(utf8_encode($body)));
+					$body_params = json_decode($body);
 					//$error = json_last_error();
 					
 					$this->parameters =$body_params;
