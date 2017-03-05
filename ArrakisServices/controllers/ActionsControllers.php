@@ -16,7 +16,7 @@ class ActionsControllers //extends MyController
 	{
 		//return $param;
 		$PathOrigin=$param['urlPath'];
-		return $urlPath;
+		return $PathOrigin;
 		//$pConverted=new Convertor($urlPath, $this->ServerPath);
 		$vide='';
 		$SRV_CONVERT='http://192.168.0.44/ArrakisWeb/ArrakisVideos/';
