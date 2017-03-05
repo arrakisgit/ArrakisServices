@@ -20,6 +20,17 @@ function apiAutoload($classname)
 	}
 }
 
+
+$uploaddir = realpath('./') . '/';
+
+echo '<pre>';
+
+echo 'Here is some more debugging info:';
+print_r($_FILES);
+echo "\n<hr />\n";
+print_r($_POST);
+print "</pr" . "e>\n";
+
 $request = new Request();
 
 echo $request->result;
@@ -36,26 +47,31 @@ class Request
 		
 		$this->verb = $_SERVER['REQUEST_METHOD'];
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
-		$this->parseIncomingParams();
-		// initialise json as default format
-		//$this->format = 'jsonX';
-		if(isset($this->parameters['format'])) 
+		
+		$uploadfile = $uploaddir . basename($_FILES['file_contents']['name']);
+		
+		if (move_uploaded_file($_FILES['file_contents']['tmp_name'], $uploadfile)) 
 		{
-			$this->format = $this->parameters['format'];
-		}
-		// route the request to the right place
-		$controller_name = ucfirst($this->url_elements[1]) . 'Controllers';
-		if (class_exists($controller_name)) 
-		{
-			$controller = new $controller_name();
-			$action_name = strtolower($this->verb) . 'Action';
-			$this->result=$controller->$action_name($this->parameters);
-		}
+			// route the request to the right place
+			$controller_name = ucfirst($this->url_elements[1]) . 'Controllers';
+			if (class_exists($controller_name))
+			{
+				$controller = new $controller_name();
+				$action_name = strtolower($this->verb) . 'Action';
+				$this->result=$controller->$action_name($uploadfile);
+			}
+			else
+			{
+				$this->result ='rien //'.$uploadfile;//$controller_name;//$_SERVER['PATH_INFO'];
+			}
+		} 
 		else 
 		{
-			$this->result ='rien';//$controller_name;//$_SERVER['PATH_INFO'];
+			$this->result = "Possible file upload attack!\n";
 		}
-		return 'boubalou';//$this->result;//$results;//true;
+		
+		
+		return $this->result;//'boubalou';//$this->result;//$results;//true;
 	}
 		
 	public function parseIncomingParams() 

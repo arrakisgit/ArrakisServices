@@ -14,34 +14,33 @@ class ActionsControllers //extends MyController
 
 	public function postAction($param)
 	{
-		//return $param;
-		$PathOrigin=$param['urlPath'];
-		return $PathOrigin;
-		//$pConverted=new Convertor($urlPath, $this->ServerPath);
+		
+		$PathOrigin=$param;
+		
 		$vide='';
-		$SRV_CONVERT='http://192.168.0.44/ArrakisWeb/ArrakisVideos/';
+		$SRV_CONVERT=realpath('./ArrakisVideos').'/';
 		$extension=strtoupper(strrev(explode('.',strrev(strrev(explode('/',strrev($PathOrigin))[0])))[0]));
-		 $NameVideos=str_replace('.'.strtolower($extension),$vide,strrev(explode('/',strrev($PathOrigin))[0]));
-		 $URL_COVERT_VIDEOS=$SRV_CONVERT.$NameVideos.'.mp4';
-		 //return $extension;//$URL_COVERT_VIDEOS;
-		 if ($extension=='AVI')
+		$NameVideos=str_replace('.'.strtolower($extension),$vide,strrev(explode('/',strrev($PathOrigin))[0]));
+		$URL_COVERT_VIDEOS=$SRV_CONVERT.$NameVideos.'.mp4';
+		 
+		if ($extension=='AVI')
 		 {
 		 $commandeShell='sudo avconv -i '.$PathOrigin.' -c:v libx264 -c:a copy '.str_replace('http://192.168.0.44','/var/www/html',$URL_COVERT_VIDEOS);
 		 $result=ExcuteShell($commandeShell);
 		
 		 }
-		 elseif ($extension=="MKV")
+		elseif ($extension=="MKV")
 		 {
 		 $commandeShell='sudo ffmpeg -i '.$urlPath.' -vcodec copy -acodec copy '.$URL_COVERT_VIDEOS;
 		 $result=ExcuteShell($commandeShell);
 		
 		 }
-		 else
+		else
 		 {
 		 	
 		 }
 		 //$PathConvertedFile=$URL_COVERT_VIDEOS;
-		return $URL_COVERT_VIDEOS;
+	return $URL_COVERT_VIDEOS;
 		//return $data;
 	}
 	
