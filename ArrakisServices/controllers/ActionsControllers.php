@@ -16,7 +16,7 @@ class ActionsControllers //extends MyController
 	{
 		
 		$PathOrigin=$param;
-		
+		return 'ActionPost Method';
 		$vide='';
 		$SRV_CONVERT=realpath('./ArrakisVideos').'/';
 		$extension=strtoupper(strrev(explode('.',strrev(strrev(explode('/',strrev($PathOrigin))[0])))[0]));

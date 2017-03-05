@@ -49,7 +49,7 @@ class Request
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		
 		$uploadfile = $uploaddir . basename($_FILES['file_contents']['name']);
-		
+		return 'construct()';
 		if (move_uploaded_file($_FILES['file_contents']['tmp_name'], $uploadfile)) 
 		{
 			// route the request to the right place
