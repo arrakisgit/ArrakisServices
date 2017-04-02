@@ -44,12 +44,12 @@ class Request
 
 	public function __construct() 
 	{
-		return 'ici c est bon';
+		//return 'ici c est bon';
 		$this->verb = $_SERVER['REQUEST_METHOD'];
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		
 		$uploadfile = $uploaddir . basename($_FILES['file_contents']['name']);
-		return 'construct()';
+		return $uploadfile;//'construct()';
 		if (move_uploaded_file($_FILES['file_contents']['tmp_name'], $uploadfile)) 
 		{
 			// route the request to the right place
