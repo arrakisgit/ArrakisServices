@@ -47,9 +47,9 @@ class Request
 		//return 'ici c est bon';
 		$this->verb = $_SERVER['REQUEST_METHOD'];
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
-		
+		$uploaddir = realpath('./') . '/';
 		$uploadfile = $uploaddir . basename($_FILES['file_contents']['name']);
-		return var_dump($_FILES['file_contents']);//$uploadfile;//'construct()';
+		return $uploadfile;//'construct()';
 		if (move_uploaded_file($_FILES['file_contents']['tmp_name'], $uploadfile)) 
 		{
 			// route the request to the right place
