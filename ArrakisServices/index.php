@@ -23,12 +23,9 @@ function apiAutoload($classname)
 
 $uploaddir = realpath('./') . '/';
 
-echo 'Here is some more debugging info:';
-echo var_dump($_FILES['file_contents']['name']);
-
 $request = new Request();
 
-echo $request->result;
+//echo $request->result;
 class Request 
 {
 	public $url_elements;
@@ -44,7 +41,7 @@ class Request
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		$uploaddir = realpath('./') . '/';
 		$uploadfile = $uploaddir . basename($_FILES['file_contents']['name']);
-		return 'rrrrr';//$uploadfile;//'construct()';
+		//return 'rrrrr';//$uploadfile;//'construct()';
 		if (move_uploaded_file($_FILES['file_contents']['tmp_name'], $uploadfile)) 
 		{
 			// route the request to the right place
