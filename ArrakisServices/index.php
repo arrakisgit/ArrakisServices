@@ -23,13 +23,8 @@ function apiAutoload($classname)
 
 $uploaddir = realpath('./') . '/';
 
-echo '<pre>';
-
 echo 'Here is some more debugging info:';
-print_r($_FILES);
-echo "\n<hr />\n";
-print_r($_POST);
-print "</pr" . "e>\n";
+echo var_dump($_FILES['file_contents']['name']);
 
 $request = new Request();
 
@@ -62,7 +57,7 @@ class Request
 			}
 			else
 			{
-				$this->result ='rien //'.$uploadfile;//$controller_name;//$_SERVER['PATH_INFO'];
+				$this->result ='rien'; //.$uploadfile;//$controller_name;//$_SERVER['PATH_INFO'];
 			}
 		} 
 		else 
