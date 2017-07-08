@@ -38,7 +38,7 @@ class SendMediaFiles
 	{
 		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $this->fileUploaded))
 		{
-			
+			return 'moved';
 			$this->ch = curl_init($this->urlArrakisServices);
 			
 			if (function_exists('curl_file_create'))
