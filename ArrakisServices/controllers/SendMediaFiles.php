@@ -25,7 +25,7 @@ class SendMediaFiles
 		if (is_uploaded_file($_FILES['userfile']['name']))
 		{
 			$this->fileUploaded = $uploaddir . basename($_FILES['userfile']['name']);
-			$this->resultat = SendCallArrakisServices();
+			$this->resultat = 'ok';//SendCallArrakisServices();
 		}
 		else 
 		{
