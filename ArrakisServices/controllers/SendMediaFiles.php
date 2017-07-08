@@ -64,6 +64,10 @@ class SendMediaFiles
 			
 			return $response;
 		}
+		else 
+		{
+			return 'no file moved';
+		}
 		
 	}
 }
