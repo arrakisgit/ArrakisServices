@@ -9,7 +9,15 @@
 
 echo 'initialisation<br/>';
 $oWebPage = new SendMediaFiles('http://192.168.0.23/ArrakisServices/ArrakisServices/index.php/Actions');
-echo 'result = '.$oWebPage->resultat;
+
+if ($oWebPage->resultat!='no file')
+{
+	echo 'result = '.$oWebPage->SendCallArrakisServices();
+}
+else
+{
+	echo 'result = '.$oWebPage->resultat;
+}
 
 class SendMediaFiles
 {
@@ -25,7 +33,6 @@ class SendMediaFiles
 		if (is_uploaded_file($_FILES['userfile']['tmp_name']))
 		{
 			$this->fileUploaded = $uploaddir . basename($_FILES['userfile']['tmp_name']);
-			$this->resultat = SendCallArrakisServices();
 		}
 		else 
 		{
