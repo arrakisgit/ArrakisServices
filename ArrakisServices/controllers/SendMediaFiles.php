@@ -36,33 +36,35 @@ class SendMediaFiles
 	
 	public function SendCallArrakisServices()
 	{
-		
-		$file_name_with_full_path=$this->fileUploaded;
-		
-		$this->ch = curl_init($this->urlArrakisServices);
-		
-		if (function_exists('curl_file_create'))
-		{ // php 5.6+
-			$finfo = finfo_open(FILEINFO_MIME_TYPE);
-			$typemim= finfo_file($finfo, $file_name_with_full_path);
-			$cFile = new CURLFile($file_name_with_full_path,$typemim);
+		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $this->fileUploaded))
+		{
+			
+			$this->ch = curl_init($this->urlArrakisServices);
+			
+			if (function_exists('curl_file_create'))
+			{ // php 5.6+
+				$finfo = finfo_open(FILEINFO_MIME_TYPE);
+				$typemim= finfo_file($finfo, $this->fileUploaded);
+				$cFile = new CURLFile($this->fileUploaded,$typemim);
+			}
+			else
+			{
+				$cFile = '@' . realpath($this->fileUploaded);
+			}
+			
+			$post = array('extra_info' => 'videos file','file_contents'=> $cFile);
+			curl_setopt_array($this->ch, array(
+					CURLOPT_POST => TRUE,
+					CURLOPT_RETURNTRANSFER => TRUE,
+					CURLOPT_POSTFIELDS => $post
+			));
+			
+			// Send the request
+			$response = curl_exec($this->ch);
+			
+			return $response;
 		}
-		else
-		{ 
-			$cFile = '@' . realpath($file_name_with_full_path);
-		}
-	
-		$post = array('extra_info' => 'videos file','file_contents'=> $cFile);
-		curl_setopt_array($this->ch, array(
-				CURLOPT_POST => TRUE,
-				CURLOPT_RETURNTRANSFER => TRUE,
-				CURLOPT_POSTFIELDS => $post
-		));
 		
-		// Send the request
-		$response = curl_exec($this->ch);
-		
-		return $response;
 	}
 }
 ?>
