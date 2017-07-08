@@ -20,7 +20,7 @@ class SendMediaFiles
 	public function __construct($pUrlService)
 	{
 		$this->urlArrakisServices=$pUrlService;
-		$uploaddir = '/var/www/uploads/';
+		$uploaddir = '/var/www/html/ArrakisServices/uploads/';
 		
 		if (is_uploaded_file($_FILES['userfile']['tmp_name']))
 		{
