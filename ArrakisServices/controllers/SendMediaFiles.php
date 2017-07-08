@@ -22,10 +22,10 @@ class SendMediaFiles
 		$this->urlArrakisServices=$pUrlService;
 		$uploaddir = '/var/www/uploads/';
 		
-		if (is_uploaded_file($_FILES['userfile']['name']))
+		if (is_uploaded_file($_FILES['userfile']['tmp_name']))
 		{
-			$this->fileUploaded = $uploaddir . basename($_FILES['userfile']['name']);
-			$this->resultat = 'ok';//SendCallArrakisServices();
+			$this->fileUploaded = $uploaddir . basename($_FILES['userfile']['tmp_name']);
+			$this->resultat = $this->fileUploaded;//'ok';//SendCallArrakisServices();
 		}
 		else 
 		{
