@@ -21,7 +21,7 @@ function apiAutoload($classname)
 }
 
 
-$uploaddir = realpath('./') . '/';
+//$uploaddir = realpath('./') . '/';
 
 $request = new Request();
 
@@ -41,10 +41,14 @@ class Request
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		$uploaddir = realpath('./') . '/';
 		$uploadfile = $uploaddir . basename($_FILES['file_contents']['name']);
-		return 'rrrrr';//$uploadfile;//'construct()';
-		if (move_uploaded_file($_FILES['file_contents']['tmp_name'], $uploadfile)) 
-		{
+		
+		$this->result = 'verb := '.$this->verb.'<br/>'.'url_elements := '.$this->url_elements.'<br/>'.'uploaddir := '.$uploaddir.'<br/>'.'uploadfile := '.$uploadfile;
+		
+		//if (move_uploaded_file($_FILES['file_contents']['tmp_name'], $uploadfile)) 
+		//{
 			// route the request to the right place
+			
+			/*
 			$controller_name = ucfirst($this->url_elements[1]) . 'Controllers';
 			if (class_exists($controller_name))
 			{
@@ -62,82 +66,9 @@ class Request
 			$this->result = "Possible file upload attack!\n";
 		}
 		
-		
+		*/
 		return $this->result;//'boubalou';//$this->result;//$results;//true;
 	}
 		
-	public function parseIncomingParams() 
-	{
-			$parameters = array();
-		
-			// first of all, pull the GET vars
-			if (isset($_SERVER['QUERY_STRING'])) 
-			{
-				parse_str($_SERVER['QUERY_STRING'], $parameters);
-			}
-		
-			// now how about PUT/POST bodies? These override what we got from GET
-			$body = file_get_contents("php://input");
-			$content_type = false;
-			
-			if(isset($_SERVER['CONTENT_TYPE']))
-			{
-				$content_type = $_SERVER['CONTENT_TYPE'];
-			}
-			
-			switch($content_type)
-			{
-				case "application/json":
-					//$this->parameters =$body;
-					$body_params = json_decode($body,true);
-					//$error = json_last_error();
-					
-					$this->parameters =$body_params;
-					/*if($body_params)
-					{
-						foreach($body_params as $param_name => $param_value)
-						{
-							$parameters[$param_name] = $param_value;
-						}
-					}*/
-					$this->format = "json";
-					break;
-				case "application/x-www-form-urlencoded":
-					parse_str($body, $postvars);
-					foreach($postvars as $field => $value)
-					{
-						$parameters[$field] = $value;
-		
-					}
-					$this->format = "html";
-					break;
-				default:
-					// we could parse other supported formats here
-					break;
-			}
-			//$this->parameters = $body;//$parameters;
-		}
-		
-		public function decodeJsonError($errorCode)
-		{
-			$errors = array(
-					JSON_ERROR_NONE => 'No error has occurred',
-					JSON_ERROR_DEPTH => 'The maximum stack depth has been exceeded',
-					JSON_ERROR_STATE_MISMATCH => 'Invalid or malformed JSON',
-					JSON_ERROR_CTRL_CHAR => 'Control character error, possibly incorrectly encoded',
-					JSON_ERROR_SYNTAX => 'Syntax error',
-					JSON_ERROR_UTF8 => 'Malformed UTF-8 characters, possibly incorrectly encoded',
-					JSON_ERROR_RECURSION => 'One or more recursive references in the value to be encoded',
-					JSON_ERROR_INF_OR_NAN => 'One or more NAN or INF values in the value to be encoded',
-					JSON_ERROR_UNSUPPORTED_TYPE => 'A value of a type that cannot be encoded was given'
-			);
-		
-			if (isset($errors[$errorCode]))
-			{
-				return $errors[$errorCode];
-			}
-		
-			return 'Unknown error';
-		}
 }
 ?>
