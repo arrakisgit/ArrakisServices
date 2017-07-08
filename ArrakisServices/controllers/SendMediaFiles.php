@@ -7,8 +7,9 @@
  *git         : https://github.com/arrakisgit/ArrakisServices.git
  */
 
+echo 'initialisation<br/>';
 $oWebPage = new SendMediaFiles('http://192.168.0.23/ArrakisServices/ArrakisServices/index.php/Actions');
-echo ''.$oWebPage->resultat;
+echo 'result = '.$oWebPage->resultat;
 
 class SendMediaFiles
 {
