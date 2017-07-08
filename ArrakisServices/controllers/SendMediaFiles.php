@@ -29,7 +29,7 @@ class SendMediaFiles
 		}
 		else 
 		{
-			$this->fileUploaded = 'no file';
+			$this->resultat ='no file';
 		}
 		
 	}
