@@ -25,7 +25,8 @@ function apiAutoload($classname)
 
 $request = new Request();
 
-//echo $request->result;
+echo $request->result;
+
 class Request 
 {
 	public $url_elements;
@@ -67,7 +68,7 @@ class Request
 		}
 		
 		*/
-		return $this->result;//'boubalou';//$this->result;//$results;//true;
+		//return $this->result;//'boubalou';//$this->result;//$results;//true;
 	}
 		
 }
