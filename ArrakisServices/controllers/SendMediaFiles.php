@@ -7,8 +7,6 @@
  *git         : https://github.com/arrakisgit/ArrakisServices.git
  */
 
-ini_set('upload_max_filesize', '500M');
-ini_set('post_max_size', '500M');
 
 echo 'initialisation<br/>';
 $oWebPage = new SendMediaFiles('http://192.168.0.23/ArrakisServices/ArrakisServices/index.php/Actions');
