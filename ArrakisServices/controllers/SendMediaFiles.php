@@ -32,7 +32,7 @@ class SendMediaFiles
 		
 		if (is_uploaded_file($_FILES['userfile']['tmp_name']))
 		{
-			$this->fileUploaded = $_FILES['userfile']['tmp_name'];//$uploaddir . basename($_FILES['userfile']['tmp_name']);
+			$this->fileUploaded = $uploaddir . basename($_FILES['userfile']['tmp_name']);
 		}
 		else 
 		{
