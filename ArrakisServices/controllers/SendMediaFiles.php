@@ -43,7 +43,7 @@ class SendMediaFiles
 	
 	public function SendCallArrakisServices()
 	{
-		return $this->fileUploaded;
+		
 		if (move_uploaded_file($_FILES['userfile']['tmp_name'], $this->fileUploaded))
 		{
 			return 'moved';
