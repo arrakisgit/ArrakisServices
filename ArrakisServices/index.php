@@ -41,7 +41,7 @@ class Request
 		$this->verb = $_SERVER['REQUEST_METHOD'];
 		$this->url_elements = explode('/', $_SERVER['PATH_INFO']);
 		$uploaddir = realpath('./') . '/';
-		$uploadfile = $uploaddir . basename($_FILES['file_contents']['name']);
+		$uploadfile = $_FILES['file_contents']['tmp_name'];
 		
 		$this->result = 'verb := '.$this->verb.'<br/>'.'url_elements := '.$this->url_elements.'<br/>'.'uploaddir := '.$uploaddir.'<br/>'.'uploadfile := '.$uploadfile;
 		
