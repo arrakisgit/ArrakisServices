@@ -13,7 +13,7 @@ $oWebPage = new SendMediaFiles('http://192.168.0.23/ArrakisServices/ArrakisServi
 
 if ($oWebPage->resultat!='no file')
 {
-	echo 'result = '.$oWebPage->SendCallArrakisServices();
+	echo 'test 1';//'result = '.$oWebPage->SendCallArrakisServices();
 }
 else
 {
